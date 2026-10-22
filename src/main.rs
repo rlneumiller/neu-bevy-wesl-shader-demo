@@ -16,12 +16,6 @@ fn main() {
 #[derive(Asset, TypePath, AsBindGroup, Debug, Clone)]
 struct StarburstMaterial {}
 
-// impl Material for StarburstMaterial {
-//     fn fragment_shader() -> ShaderRef {
-//         "shaders/starburst.wesl".into()
-//     }
-// }
-
 impl Material for StarburstMaterial {
     fn fragment_shader() -> ShaderRef {
         "shaders/starburst.wesl".into()
