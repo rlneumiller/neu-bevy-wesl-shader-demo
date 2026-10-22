@@ -1,0 +1,115 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "neu-bevy-wesl-shader-demo"
+    }
+  ],
+  "settings": {
+    "[rust]": {
+      "editor.defaultFormatter": "rust-lang.rust-analyzer",
+      "editor.semanticHighlighting.enabled": false,
+    },
+    "dev.containers.dockerPath": "/usr/bin/podman",
+    "docker.dockerPath": "/usr/bin/podman",
+    "docker.host": "unix:///run/user/1000/podman/podman.sock",
+    "editor.formatOnSave": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.semanticHighlighting.enabled": false,
+    "git.autoRepositoryDetection": false,
+    "git.detectSubmodules": false,
+    "git.detectSubmodulesLimit": 0,
+    "git.enableSmartCommit": false,
+    "git.scanRepositories": ["."],
+    "git.smartCommitChanges": "tracked",
+    "remote.containers.dockerPath": "/usr/bin/podman",
+    "rust-analyzer.files.exclude": ["target/", "node_modules/", "build/"],
+    "terminal.integrated.env.linux": {
+      "WINIT_UNIX_BACKEND": "wayland",
+    },
+    "workbench.colorCustomizations": {
+      "terminal.background": "#36014b69",
+      "terminal.foreground": "#058d0c",
+      "terminalCursor.background": "#91b101",
+      "terminalCursor.foreground": "#268102",
+    },
+    "workbench.tree.indent": 30,
+    "chat.tools.terminal.autoApprove": {
+      "rg": true,
+      "grep": true,
+      "fd": true,
+      "find": true,
+      "cat": true,
+      "head": true,
+      "tail": true,
+    },
+    "rust-analyzer.inlayHints.parameterHints.enable": true,
+    "rust-analyzer.inlayHints.typeHints.enable": true,
+    "rust-analyzer.inlayHints.chainingHints.enable": true,
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "neu-bevy-wesl-shader-demo (Bin)",
+        "type": "lldb",
+        "request": "launch",
+        "cwd": "${workspaceFolder:neu-bevy-wesl-shader-demo}",
+        "env": {
+          "BEVY_ASSET_ROOT": "${workspaceFolder:neu-bevy-wesl-shader-demo}",
+        },
+        "cargo": {
+          "args": [
+            "run",
+            "--bin",
+            "neu-bevy-wesl-shader-demo",
+            "--target-dir",
+            "${workspaceFolder:neu-bevy-wesl-shader-demo}/target",
+            "--manifest-path",
+            "${workspaceFolder:neu-bevy-wesl-shader-demo}/Cargo.toml",
+          ],
+          "cwd": "${workspaceFolder:neu-bevy-wesl-shader-demo}",
+        },
+        "args": [],
+      },
+    ],
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build Project",
+        "type": "shell",
+        "command": "cargo",
+        "args": ["build"],
+        "cwd": "${workspaceFolder:neu-bevy-wesl-shader-demo}",
+        "group": {
+          "kind": "build",
+          "isDefault": true,
+        },
+        "presentation": {
+          "echo": true,
+          "focus": false,
+          "panel": "shared",
+          "reveal": "always",
+        },
+        "problemMatcher": ["$rustc"],
+      },
+      {
+        "label": "Run Project",
+        "type": "shell",
+        "command": "cargo",
+        "args": ["run"],
+        "cwd": "${workspaceFolder:neu-bevy-wesl-shader-demo}",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "focus": true,
+          "panel": "dedicated",
+          "reveal": "always",
+        },
+        "problemMatcher": ["$rustc"],
+      },
+    ],
+  },
+}

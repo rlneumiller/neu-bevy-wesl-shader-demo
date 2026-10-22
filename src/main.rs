@@ -1,3 +1,4 @@
+use bevy::post_process::bloom::Bloom;
 use bevy::prelude::*;
 use bevy::render::render_resource::AsBindGroup;
 use bevy::shader::ShaderRef;
@@ -14,6 +15,12 @@ fn main() {
 
 #[derive(Asset, TypePath, AsBindGroup, Debug, Clone)]
 struct StarburstMaterial {}
+
+// impl Material for StarburstMaterial {
+//     fn fragment_shader() -> ShaderRef {
+//         "shaders/starburst.wesl".into()
+//     }
+// }
 
 impl Material for StarburstMaterial {
     fn fragment_shader() -> ShaderRef {
@@ -36,6 +43,7 @@ fn setup(
     commands.spawn((
         Camera3d::default(),
         Transform::from_xyz(0.0, 0.0, 3.0).looking_at(Vec3::ZERO, Vec3::Y),
+        Bloom::NATURAL,
     ));
 
     // Light (optional, but helps if you later mix with standard lighting)
