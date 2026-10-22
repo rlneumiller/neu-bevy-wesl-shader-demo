@@ -26,6 +26,9 @@ impl Material for StarburstMaterial {
     fn fragment_shader() -> ShaderRef {
         "shaders/starburst.wesl".into()
     }
+    fn alpha_mode(&self) -> AlphaMode {
+        AlphaMode::Blend
+    }
 }
 
 fn setup(
@@ -44,11 +47,16 @@ fn setup(
         Camera3d::default(),
         Transform::from_xyz(0.0, 0.0, 3.0).looking_at(Vec3::ZERO, Vec3::Y),
         Bloom::NATURAL,
+        AmbientLight {
+            color: Color::NONE,
+            brightness: 0.0,
+            ..default()
+        },
     ));
 
     // Light (optional, but helps if you later mix with standard lighting)
-    commands.spawn((
-        DirectionalLight::default(),
-        Transform::from_xyz(2.0, 2.0, 2.0).looking_at(Vec3::ZERO, Vec3::Y),
-    ));
+    // commands.spawn((
+    //     DirectionalLight::default(),
+    //     Transform::from_xyz(2.0, 2.0, 2.0).looking_at(Vec3::ZERO, Vec3::Y),
+    // ));
 }
